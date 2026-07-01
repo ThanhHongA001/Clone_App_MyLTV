@@ -1,94 +1,92 @@
 import 'package:flutter/material.dart';
 
+import 'xml_search_common.dart';
+
 class XmlSearchBus extends StatelessWidget {
   const XmlSearchBus({super.key});
 
+  static const Color _color = Color(0xff58aa70);
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: appBarXeTuyen(),
-      body: Column(
-        children: [
-          giaoDienTieuDe(),
-          giaoDienNoiDung(),
-        ],
-      ),
-    );
-  }
-
-  PreferredSizeWidget appBarXeTuyen() {
-    return AppBar(
-      title: const Text('Xe tuyến'),
-      centerTitle: true,
-    );
-  }
-
-  Widget giaoDienTieuDe() {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(16),
-      child: const Text(
-        'Tra cứu xe tuyến',
-        style: TextStyle(
-          fontSize: 22,
-          fontWeight: FontWeight.bold,
+    return SearchPageFrame(
+      title: 'Xe tuyến',
+      subtitle: 'Tra cứu tuyến xe, tài xế, điểm đón và lịch trình di chuyển.',
+      icon: Icons.directions_bus_rounded,
+      color: _color,
+      children: [
+        _routeCard(
+          route: 'Tuyến 03 - Khu đô thị phía Đông',
+          plate: '29B-123.45',
+          driver: 'Chú Nguyễn Văn Hùng',
+          phone: '0901 234 567',
+          pickup: 'Cổng A - 06:35',
+          dropOff: 'Cổng trường - 06:55',
+          status: 'Đang hoạt động',
         ),
-      ),
+        _routeCard(
+          route: 'Tuyến 07 - Trung tâm thành phố',
+          plate: '29B-678.90',
+          driver: 'Cô Trần Thu Hà',
+          phone: '0908 888 777',
+          pickup: 'Nhà văn hóa phường - 06:25',
+          dropOff: 'Cổng trường - 06:50',
+          status: 'Còn chỗ',
+        ),
+        _noteCard(),
+      ],
     );
   }
 
-  Widget giaoDienNoiDung() {
-    return Expanded(
-      child: ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          giaoDienDongThongTin(
-            title: 'Tuyến xe',
-            content: 'Chưa có dữ liệu tuyến xe',
-          ),
-          giaoDienDongThongTin(
-            title: 'Thời gian',
-            content: 'Chưa có dữ liệu thời gian',
-          ),
-          giaoDienDongThongTin(
-            title: 'Điểm đón',
-            content: 'Chưa có dữ liệu điểm đón',
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget giaoDienDongThongTin({
-    required String title,
-    required String content,
+  Widget _routeCard({
+    required String route,
+    required String plate,
+    required String driver,
+    required String phone,
+    required String pickup,
+    required String dropOff,
+    required String status,
   }) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        color: const Color(0xffffffff),
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(
-          color: const Color(0xffe0e0e0),
+    return SearchInfoCard(
+      title: route,
+      subtitle: 'Biển số: $plate',
+      icon: Icons.route_rounded,
+      color: _color,
+      tag: status,
+      children: [
+        InfoLine(icon: Icons.person_rounded, label: 'Tài xế', value: driver),
+        InfoLine(icon: Icons.phone_rounded, label: 'Liên hệ', value: phone),
+        InfoLine(
+          icon: Icons.location_on_rounded,
+          label: 'Điểm đón',
+          value: pickup,
         ),
+        InfoLine(icon: Icons.flag_rounded, label: 'Điểm đến', value: dropOff),
+      ],
+    );
+  }
+
+  Widget _noteCard() {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: _color.withValues(alpha: 0.1),
+        borderRadius: BorderRadius.circular(18),
       ),
-      child: Column(
+      child: const Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            title,
-            style: const TextStyle(
-              fontSize: 17,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            content,
-            style: const TextStyle(
-              fontSize: 15,
-              color: Color(0xff555555),
+          Icon(Icons.info_rounded, color: _color),
+          SizedBox(width: 10),
+          Expanded(
+            child: Text(
+              'Phụ huynh vui lòng cho học sinh có mặt tại điểm đón trước giờ xe chạy 5 phút.',
+              style: TextStyle(
+                color: Color(0xff2f2d33),
+                fontSize: 14,
+                height: 1.4,
+                fontWeight: FontWeight.w700,
+              ),
             ),
           ),
         ],

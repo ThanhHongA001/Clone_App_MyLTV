@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import '../../item/home/item_home_search_page.dart';
 
 import '../../activity/search/SearchOnlineStudy.dart';
+import '../search/xmlsearchattendance.dart';
 import '../search/xmlsearchbus.dart';
+import '../search/xmlsearchhomework.dart';
+import '../search/xmlsearchnotification.dart';
 import '../search/xmlsearchrewarddiscipline.dart';
 import '../search/xmlsearchscore.dart';
 import '../search/xmlsearchtimetable.dart';
@@ -76,7 +79,7 @@ class XmlHomeSearchPage extends StatelessWidget {
       backgroundColor: const Color(0xff459d91),
       iconCircleColor: const Color(0xff64b9ad),
       onTap: () {
-        moManHinh(context, const ManHinhDangPhatTrien(title: 'Thông báo'));
+        moManHinh(context, const XmlSearchNotification());
       },
     );
   }
@@ -88,7 +91,7 @@ class XmlHomeSearchPage extends StatelessWidget {
       backgroundColor: const Color(0xff6f8793),
       iconCircleColor: const Color(0xff90a5b0),
       onTap: () {
-        moManHinh(context, const ManHinhDangPhatTrien(title: 'Chuyên cần'));
+        moManHinh(context, const XmlSearchAttendance());
       },
     );
   }
@@ -100,7 +103,7 @@ class XmlHomeSearchPage extends StatelessWidget {
       backgroundColor: const Color(0xff498daf),
       iconCircleColor: const Color(0xff70aac8),
       onTap: () {
-        moManHinh(context, const ManHinhDangPhatTrien(title: 'Bài tập về nhà'));
+        moManHinh(context, const XmlSearchHomework());
       },
     );
   }
