@@ -16,11 +16,7 @@ class XmlHomeSearchPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xfffcf8fd),
       appBar: appBarTraCuu(),
-      body: Column(
-        children: [
-          giaoDienDanhSachTraCuu(context),
-        ],
-      ),
+      body: Column(children: [giaoDienDanhSachTraCuu(context)]),
     );
   }
 
@@ -42,33 +38,35 @@ class XmlHomeSearchPage extends StatelessWidget {
 
   Widget giaoDienDanhSachTraCuu(BuildContext context) {
     return Expanded(
-      child: GridView.count(
-        padding: const EdgeInsets.fromLTRB(18, 24, 18, 24),
-        crossAxisCount: 2,
-        crossAxisSpacing: 18,
-        mainAxisSpacing: 20,
-        childAspectRatio: 1.38,
-        children: [
-          giaoDienOThongBao(context),
-          giaoDienOChuyenCan(context),
-          giaoDienOBaiTapVeNha(context),
-          giaoDienOSoDiem(context),
-          giaoDienOKhenThuongKyLuat(context),
-          giaoDienOThoiKhoaBieu(context),
-          giaoDienOHocTapOnline(context),
-          giaoDienOXeTuyen(context),
-        ],
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final cardWidth = (constraints.maxWidth - 44) / 2;
+          final cardHeight = cardWidth * 0.74;
+
+          return GridView.count(
+            padding: const EdgeInsets.fromLTRB(14, 8, 14, 18),
+            crossAxisCount: 2,
+            crossAxisSpacing: 16,
+            mainAxisSpacing: 14,
+            childAspectRatio: cardWidth / cardHeight,
+            children: [
+              giaoDienOThongBao(context),
+              giaoDienOChuyenCan(context),
+              giaoDienOBaiTapVeNha(context),
+              giaoDienOSoDiem(context),
+              giaoDienOKhenThuongKyLuat(context),
+              giaoDienOThoiKhoaBieu(context),
+              giaoDienOHocTapOnline(context),
+              giaoDienOXeTuyen(context),
+            ],
+          );
+        },
       ),
     );
   }
 
   void moManHinh(BuildContext context, Widget page) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => page,
-      ),
-    );
+    Navigator.push(context, MaterialPageRoute(builder: (context) => page));
   }
 
   Widget giaoDienOThongBao(BuildContext context) {
@@ -78,10 +76,7 @@ class XmlHomeSearchPage extends StatelessWidget {
       backgroundColor: const Color(0xff459d91),
       iconCircleColor: const Color(0xff64b9ad),
       onTap: () {
-        moManHinh(
-          context,
-          const ManHinhDangPhatTrien(title: 'Thông báo'),
-        );
+        moManHinh(context, const ManHinhDangPhatTrien(title: 'Thông báo'));
       },
     );
   }
@@ -93,10 +88,7 @@ class XmlHomeSearchPage extends StatelessWidget {
       backgroundColor: const Color(0xff6f8793),
       iconCircleColor: const Color(0xff90a5b0),
       onTap: () {
-        moManHinh(
-          context,
-          const ManHinhDangPhatTrien(title: 'Chuyên cần'),
-        );
+        moManHinh(context, const ManHinhDangPhatTrien(title: 'Chuyên cần'));
       },
     );
   }
@@ -108,10 +100,7 @@ class XmlHomeSearchPage extends StatelessWidget {
       backgroundColor: const Color(0xff498daf),
       iconCircleColor: const Color(0xff70aac8),
       onTap: () {
-        moManHinh(
-          context,
-          const ManHinhDangPhatTrien(title: 'Bài tập về nhà'),
-        );
+        moManHinh(context, const ManHinhDangPhatTrien(title: 'Bài tập về nhà'));
       },
     );
   }
@@ -180,24 +169,16 @@ class XmlHomeSearchPage extends StatelessWidget {
 class ManHinhDangPhatTrien extends StatelessWidget {
   final String title;
 
-  const ManHinhDangPhatTrien({
-    super.key,
-    required this.title,
-  });
+  const ManHinhDangPhatTrien({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-        centerTitle: true,
-      ),
+      appBar: AppBar(title: Text(title), centerTitle: true),
       body: Center(
         child: Text(
           'Màn hình $title đang được phát triển',
-          style: const TextStyle(
-            fontSize: 18,
-          ),
+          style: const TextStyle(fontSize: 18),
         ),
       ),
     );

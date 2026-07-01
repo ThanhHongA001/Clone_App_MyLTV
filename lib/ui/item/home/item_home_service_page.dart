@@ -26,13 +26,16 @@ class ItemHomeServicePage extends StatelessWidget {
         onTap: onTap,
         child: Ink(
           decoration: AppDecorations.gridCard(backgroundColor),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              giaoDienIcon(),
-              const SizedBox(height: 18),
-              giaoDienTieuDe(),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                giaoDienIcon(),
+                const SizedBox(height: 10),
+                giaoDienTieuDe(),
+              ],
+            ),
           ),
         ),
       ),
@@ -44,11 +47,7 @@ class ItemHomeServicePage extends StatelessWidget {
       width: AppDimensions.gridIconCircleSize,
       height: AppDimensions.gridIconCircleSize,
       decoration: AppDecorations.gridIconCircle,
-      child: Icon(
-        icon,
-        size: AppDimensions.iconXL,
-        color: AppColors.textWhite,
-      ),
+      child: Icon(icon, size: AppDimensions.iconL, color: AppColors.textWhite),
     );
   }
 

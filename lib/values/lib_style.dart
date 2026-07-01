@@ -93,7 +93,7 @@ class AppTextStyles {
 
   // Grid card
   static const TextStyle gridCardTitle = TextStyle(
-    fontSize: 20,
+    fontSize: 17,
     fontWeight: FontWeight.w800,
     color: AppColors.textWhite,
   );
@@ -159,9 +159,9 @@ class AppDimensions {
   static const double loginButtonHeight = 58;
 
   // Grid card
-  static const double gridCardHeight = 132;
+  static const double gridCardHeight = 118;
   static const double gridCardRadius = 8;
-  static const double gridIconCircleSize = 92;
+  static const double gridIconCircleSize = 70;
 
   // Bottom navigation
   static const double bottomNavHeight = 74;
@@ -177,19 +177,13 @@ class AppDecorations {
   static BoxDecoration loginInputActive = BoxDecoration(
     color: AppColors.inputBackground,
     borderRadius: BorderRadius.circular(AppDimensions.radiusM),
-    border: Border.all(
-      color: AppColors.activeBorder,
-      width: 1.7,
-    ),
+    border: Border.all(color: AppColors.activeBorder, width: 1.7),
   );
 
   static BoxDecoration loginInputNormal = BoxDecoration(
     color: AppColors.inputBackground,
     borderRadius: BorderRadius.circular(AppDimensions.radiusM),
-    border: Border.all(
-      color: AppColors.border,
-      width: 1.2,
-    ),
+    border: Border.all(color: AppColors.border, width: 1.2),
   );
 
   static BoxDecoration loginButton = BoxDecoration(
@@ -199,22 +193,13 @@ class AppDecorations {
 
   static BoxDecoration newsCard = const BoxDecoration(
     color: AppColors.white,
-    border: Border(
-      bottom: BorderSide(
-        color: AppColors.divider,
-        width: 1,
-      ),
-    ),
+    border: Border(bottom: BorderSide(color: AppColors.divider, width: 1)),
   );
 
   static BoxDecoration bottomBar = const BoxDecoration(
     color: AppColors.white,
     boxShadow: [
-      BoxShadow(
-        color: AppColors.shadow,
-        blurRadius: 8,
-        offset: Offset(0, -2),
-      ),
+      BoxShadow(color: AppColors.shadow, blurRadius: 8, offset: Offset(0, -2)),
     ],
   );
 
@@ -223,12 +208,7 @@ class AppDecorations {
   );
 
   static BoxDecoration settingDivider = const BoxDecoration(
-    border: Border(
-      bottom: BorderSide(
-        color: AppColors.divider,
-        width: 1,
-      ),
-    ),
+    border: Border(bottom: BorderSide(color: AppColors.divider, width: 1)),
   );
 
   static BoxDecoration gridCard(Color color) {
@@ -269,31 +249,19 @@ class AppInputStyles {
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(AppDimensions.radiusM),
-        borderSide: const BorderSide(
-          color: AppColors.border,
-          width: 1.2,
-        ),
+        borderSide: const BorderSide(color: AppColors.border, width: 1.2),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(AppDimensions.radiusM),
-        borderSide: const BorderSide(
-          color: AppColors.activeBorder,
-          width: 1.7,
-        ),
+        borderSide: const BorderSide(color: AppColors.activeBorder, width: 1.7),
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(AppDimensions.radiusM),
-        borderSide: const BorderSide(
-          color: AppColors.error,
-          width: 1.2,
-        ),
+        borderSide: const BorderSide(color: AppColors.error, width: 1.2),
       ),
       focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(AppDimensions.radiusM),
-        borderSide: const BorderSide(
-          color: AppColors.error,
-          width: 1.7,
-        ),
+        borderSide: const BorderSide(color: AppColors.error, width: 1.7),
       ),
     );
   }

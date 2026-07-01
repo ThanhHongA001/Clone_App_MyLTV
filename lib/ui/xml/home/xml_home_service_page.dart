@@ -22,10 +22,7 @@ class XmlHomeServicePage extends StatelessWidget {
       backgroundColor: AppColors.background,
       body: SafeArea(
         child: Column(
-          children: [
-            giaoDienTieuDe(),
-            giaoDienDanhSachDichVu(context),
-          ],
+          children: [giaoDienTieuDe(), giaoDienDanhSachDichVu(context)],
         ),
       ),
     );
@@ -48,91 +45,90 @@ class XmlHomeServicePage extends StatelessWidget {
 
   Widget giaoDienDanhSachDichVu(BuildContext context) {
     return Expanded(
-      child: GridView.count(
-        padding: const EdgeInsets.symmetric(
-          horizontal: AppDimensions.paddingL,
-          vertical: AppDimensions.paddingS,
-        ),
-        crossAxisCount: 2,
-        crossAxisSpacing: AppDimensions.paddingL,
-        mainAxisSpacing: AppDimensions.paddingL,
-        childAspectRatio: 1.38,
-        children: [
-          ItemHomeServicePage(
-            icon: Icons.star,
-            title: AppStrings.meal,
-            backgroundColor: AppColors.serviceMeal,
-            onTap: () {
-              moManHinh(context, const ServiceMeal());
-            },
-          ),
-          ItemHomeServicePage(
-            icon: Icons.restaurant_menu,
-            title: AppStrings.coinFund,
-            backgroundColor: AppColors.serviceCoin,
-            onTap: () {
-              moManHinh(context, const ServiceCoin());
-            },
-          ),
-          ItemHomeServicePage(
-            icon: Icons.credit_card,
-            title: AppStrings.tuitionFee,
-            backgroundColor: AppColors.serviceTuition,
-            onTap: () {
-              moManHinh(context, const ServiceTuition());
-            },
-          ),
-          ItemHomeServicePage(
-            icon: Icons.calendar_month,
-            title: AppStrings.event,
-            backgroundColor: AppColors.serviceEvent,
-            onTap: () {
-              moManHinh(context, const ServiceEvent());
-            },
-          ),
-          ItemHomeServicePage(
-            icon: Icons.format_list_bulleted,
-            title: AppStrings.survey,
-            backgroundColor: AppColors.serviceSurvey,
-            onTap: () {
-              moManHinh(context, const ServiceSurvey());
-            },
-          ),
-          ItemHomeServicePage(
-            icon: Icons.groups,
-            title: AppStrings.club,
-            backgroundColor: AppColors.serviceClub,
-            onTap: () {
-              moManHinh(context, const ServiceClub());
-            },
-          ),
-          ItemHomeServicePage(
-            icon: Icons.directions_car,
-            title: AppStrings.busTracking,
-            backgroundColor: AppColors.serviceBus,
-            onTap: () {
-              moManHinh(context, const ServiceBusTracking());
-            },
-          ),
-          ItemHomeServicePage(
-            icon: Icons.checkroom,
-            title: AppStrings.uniform,
-            backgroundColor: AppColors.serviceUniform,
-            onTap: () {
-              moManHinh(context, const ServiceUniform());
-            },
-          ),
-        ],
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final cardWidth = (constraints.maxWidth - 44) / 2;
+          final cardHeight = cardWidth * 0.74;
+
+          return GridView.count(
+            padding: const EdgeInsets.fromLTRB(14, 4, 14, 18),
+            crossAxisCount: 2,
+            crossAxisSpacing: 16,
+            mainAxisSpacing: 14,
+            childAspectRatio: cardWidth / cardHeight,
+            children: [
+              ItemHomeServicePage(
+                icon: Icons.star,
+                title: AppStrings.meal,
+                backgroundColor: AppColors.serviceMeal,
+                onTap: () {
+                  moManHinh(context, const ServiceMeal());
+                },
+              ),
+              ItemHomeServicePage(
+                icon: Icons.restaurant_menu,
+                title: AppStrings.coinFund,
+                backgroundColor: AppColors.serviceCoin,
+                onTap: () {
+                  moManHinh(context, const ServiceCoin());
+                },
+              ),
+              ItemHomeServicePage(
+                icon: Icons.credit_card,
+                title: AppStrings.tuitionFee,
+                backgroundColor: AppColors.serviceTuition,
+                onTap: () {
+                  moManHinh(context, const ServiceTuition());
+                },
+              ),
+              ItemHomeServicePage(
+                icon: Icons.calendar_month,
+                title: AppStrings.event,
+                backgroundColor: AppColors.serviceEvent,
+                onTap: () {
+                  moManHinh(context, const ServiceEvent());
+                },
+              ),
+              ItemHomeServicePage(
+                icon: Icons.format_list_bulleted,
+                title: AppStrings.survey,
+                backgroundColor: AppColors.serviceSurvey,
+                onTap: () {
+                  moManHinh(context, const ServiceSurvey());
+                },
+              ),
+              ItemHomeServicePage(
+                icon: Icons.groups,
+                title: AppStrings.club,
+                backgroundColor: AppColors.serviceClub,
+                onTap: () {
+                  moManHinh(context, const ServiceClub());
+                },
+              ),
+              ItemHomeServicePage(
+                icon: Icons.directions_car,
+                title: AppStrings.busTracking,
+                backgroundColor: AppColors.serviceBus,
+                onTap: () {
+                  moManHinh(context, const ServiceBusTracking());
+                },
+              ),
+              ItemHomeServicePage(
+                icon: Icons.checkroom,
+                title: AppStrings.uniform,
+                backgroundColor: AppColors.serviceUniform,
+                onTap: () {
+                  moManHinh(context, const ServiceUniform());
+                },
+              ),
+            ],
+          );
+        },
       ),
     );
   }
 
   void moManHinh(BuildContext context, Widget screen) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => screen,
-      ),
-    );
+    Navigator.push(context, MaterialPageRoute(builder: (context) => screen));
   }
 }
